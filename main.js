@@ -170,12 +170,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Initial check for elements already in view
-  setTimeout(() => {
+  const triggerInitialReveal = () => {
     revealElements.forEach((el) => {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight) {
         el.classList.add('revealed');
       }
     });
-  }, 100);
+  };
+
+  // Run on load and slightly after for dynamic content
+  triggerInitialReveal();
+  setTimeout(triggerInitialReveal, 100);
 });
